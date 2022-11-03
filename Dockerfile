@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM continuumio/anaconda3:4.4.0
 
 EXPOSE 8501
 
@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+RUN conda install -c conda-forge pyarrow
 RUN pip3 install -U pip
 RUN pip3 install .
 
