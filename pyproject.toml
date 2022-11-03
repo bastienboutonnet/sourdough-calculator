@@ -9,7 +9,8 @@ authors = [
 dependencies = [
     "pydantic",
     "streamlit",
-    "jinja2>=3.0.0"
+    "jinja2>=3.0.0",
+    "watchdog"
 ]
 
 [project.optional-dependencies]
