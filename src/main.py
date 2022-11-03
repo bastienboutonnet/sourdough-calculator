@@ -48,7 +48,9 @@ def salt(total_flour: float, salt_percent: float) -> float:
     return salt
 
 
-def calculate(target_weight, hydration_pct, salt_pct, starter_pct, starter_hydration) -> None:
+def calculate(
+    target_weight, hydration_pct, salt_pct, starter_pct, starter_hydration
+) -> RecipieGrams:
     _total_flour = total_flour(
         target_weight=target_weight,
         hydration_percent=hydration_pct,
@@ -63,30 +65,31 @@ def calculate(target_weight, hydration_pct, salt_pct, starter_pct, starter_hydra
     recipe: RecipieGrams = RecipieGrams(
         flour=_final_flour, water=_water, starter=_starter.combined, salt=_salt
     )
-    st.markdown(
-        f"**Flour**: {recipe.flour}g | "
-        f"**Water**: {recipe.water}g | "
-        f"**Starter**: {recipe.starter}g | "
-        f"**Salt**: {recipe.salt}"
-    )
+    return recipe
 
 
 def main() -> int:
     st.title("Sourdough Calculator")
 
-    TARGET_WEIGHT: float = st.number_input("Target Loaf Weight (g)", value=910, step=1)
-    HYDRATION: float = st.number_input("Dough Hydration %", value=67, max_value=100, min_value=1)
-    STARTER: float = st.number_input("Starter %", value=20, min_value=1, max_value=100)
-    SALT: float = st.number_input("Salt %", value=2, min_value=1, max_value=100)
-    STARTER_HYDRATION: float = st.number_input(
+    target_weight: float = st.number_input("Target Loaf Weight (g)", value=910, step=1)
+    hydration: float = st.number_input("Dough Hydration %", value=67, max_value=100, min_value=1)
+    starter: float = st.number_input("Starter %", value=20, min_value=1, max_value=100)
+    salt: float = st.number_input("Salt %", value=2, min_value=1, max_value=100)
+    starter_hydration: float = st.number_input(
         "Starter Hydration % (typically 100%)", value=100, min_value=1, max_value=100
     )
-    calculate(
-        target_weight=TARGET_WEIGHT,
-        hydration_pct=HYDRATION,
-        salt_pct=SALT,
-        starter_pct=STARTER,
-        starter_hydration=STARTER_HYDRATION,
+    recipe = calculate(
+        target_weight=target_weight,
+        hydration_pct=hydration,
+        salt_pct=salt,
+        starter_pct=starter,
+        starter_hydration=starter_hydration,
+    )
+    st.markdown(
+        f"**Flour**: {recipe.flour}g  |  "
+        f"**Water**: {recipe.water}g  |  "
+        f"**Starter**: {recipe.starter}g  |  "
+        f"**Salt**: {recipe.salt}g"
     )
     return 0
 
