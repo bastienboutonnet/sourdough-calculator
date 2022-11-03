@@ -68,7 +68,7 @@ def calculate(
     return recipe
 
 
-def main() -> int:
+def streamlit_app() -> int:
     st.title("Sourdough Calculator")
 
     target_weight: float = st.number_input("Target Loaf Weight (g)", value=910, step=1)
@@ -95,4 +95,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    main()
+    streamlit_app()
