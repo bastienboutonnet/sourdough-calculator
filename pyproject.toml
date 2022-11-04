@@ -5,13 +5,10 @@ version = "0.0.0"
 authors = [
     { name = "Bastien Boutonnet" },
 ]
+dynamic = ["dependencies"]
 
-dependencies = [
-    "pydantic",
-    "streamlit",
-    "jinja2>=3.0.0",
-    "watchdog"
-]
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
 
 [project.optional-dependencies]
 dev = [
