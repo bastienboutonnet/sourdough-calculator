@@ -71,7 +71,7 @@ def calculate(
 def streamlit_app() -> int:
     st.title("Sourdough Calculator")
 
-    target_weight: float = st.number_input("Target Loaf Weight (g)", value=100, step=1)
+    target_weight: float = st.number_input("Target Loaf Weight (g)", value=1000, step=1)
     hydration: float = st.number_input("Dough Hydration %", value=70, max_value=100, min_value=1)
     starter: float = st.number_input("Starter %", value=20, min_value=1, max_value=100)
     salt: float = st.number_input("Salt %", value=2, min_value=1, max_value=100)
