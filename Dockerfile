@@ -5,6 +5,7 @@ EXPOSE 8501
 WORKDIR /app
 
 COPY . .
+RUN conda update conda -y
 RUN conda install -c conda-forge streamlit
 RUN pip3 install -U pip
 RUN pip3 install .
