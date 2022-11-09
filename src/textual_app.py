@@ -1,11 +1,12 @@
-from textual.app import App, ComposeResult
-from textual.events import Blur, Focus, Mount, Unmount
-from textual.widgets import Header, Footer, Input, Static
-from textual.containers import Container, Content
-from textual.reactive import reactive
 from textual import log
-from formulae import calculate
+from textual.app import App, ComposeResult
+from textual.containers import Container, Content
+from textual.events import Blur, Focus, Mount, Unmount
 from textual.message import MessageTarget
+from textual.reactive import reactive
+from textual.widgets import Footer, Header, Input, Static
+
+from formulae import calculate
 
 
 class HelloDisplay(Static):
