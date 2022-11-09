@@ -1,18 +1,11 @@
-FROM continuumio/anaconda3:4.4.0
+FROM continuumio/miniconda
 
 EXPOSE 8501
 
 WORKDIR /app
 
 COPY . .
-
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    software-properties-common \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN conda install -c conda-forge pyarrow
+RUN conda install -c conda-forge streamlit
 RUN pip3 install -U pip
 RUN pip3 install .
 
