@@ -1,4 +1,5 @@
 jinja2>=3.0.0
 pydantic
 streamlit
+textual
 watchdog
